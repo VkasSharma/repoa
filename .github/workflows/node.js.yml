@@ -19,6 +19,13 @@ jobs:
             echo "hello $BUILD_NUMBER" >> ./repob/file
             echo ${{ steps.buildnumber.outputs.build_number }} >> ./repob/file
             docker --version
+            tee /etc/docker/daemon.json<<EOF
+            {
+              "insecure-registries" : ["myregistrydomain.com:5000"]
+            }
+            EOF
+            cat /etc/docker/daemon.json
+            cat /etc/docker/daemon.json
 
         - name: Push Project B
           run: |
