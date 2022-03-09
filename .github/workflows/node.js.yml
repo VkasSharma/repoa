@@ -21,7 +21,7 @@ jobs:
         - name: Copy/Create file
           run: |
             FILE=./repoa/file
-			sed '1,2 w filedt' $FILE
+	    sed '1,2 w filedt' $FILE
 
         - name: Push Project B
           run: |
