@@ -20,7 +20,7 @@ jobs:
 
         - name: Copy/Create file
           run: |
-            echo hello > ./repoa/file$FILE
+            sed -i -E "/blah\.blub#/s/#.*/#$VERSION/" ./repoa/file
 
         - name: Push Project B
           run: |
