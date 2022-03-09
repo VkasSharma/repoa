@@ -16,7 +16,7 @@ jobs:
         - name: Copy/Create file
           run: |
             sed -i -E "/blah\.blub#/s/#.*/#$VERSION/" ./repob/file
-            echo hello$BUILD_NUMBER >> ./repob/file
+            echo "hello $BUILD_NUMBER" >> ./repob/file
 
         - name: Push Project B
           run: |
