@@ -17,9 +17,8 @@ jobs:
           run: |
             sed -i -E "/blah\.blub#/s/#.*/#$VERSION/" ./repob/file
             echo "hello $BUILD_NUMBER" >> ./repob/file
-            echo `hello $BUILD_NUMBER` >> ./repob/file
-            echo "hello $BUILD_NUMBER"
-            echo $BUILD_NUMBER
+            echo ${{ steps.buildnumber.outputs.build_number }} >> ./repob/file
+            docker --version
 
         - name: Push Project B
           run: |
@@ -29,3 +28,4 @@ jobs:
             git config user.email github-actions@github.com
             git commit -am "File Replicated from Project A"
             git push
+            docker --version
