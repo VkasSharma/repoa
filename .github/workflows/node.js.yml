@@ -1,0 +1,39 @@
+on: push
+
+jobs:
+    replicate-file:
+        runs-on: ubuntu-latest
+        name: Replicate File
+
+        steps:
+        - name: Checkout Project A
+          uses: actions/checkout@v2
+          with:
+            path: ./repoa
+
+        - name: Checkout Project B
+          uses: actions/checkout@master
+          with: 
+            repository: VkasSharma/repob
+            token: ${{ secrets.ACTIONS_TOKEN }}
+            path: ./repob
+
+        - name: Copy/Create file
+          run: |
+            FILE=./repoa/file
+            if [ -f "$FILE" ]; then
+              echo "Copying $FILE"
+              cp -R ./repoa/file ./repob
+            else 
+              echo "Creating $FILE"
+              touch ./repob/file
+            fi
+
+        - name: Push Project B
+          run: |
+            cd ./repob
+            git add .
+            git config user.name github-actions
+            git config user.email github-actions@github.com
+            git commit -am "File Replicated from Project A"
+            git push
