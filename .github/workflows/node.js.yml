@@ -17,6 +17,9 @@ jobs:
           run: |
             sed -i -E "/blah\.blub#/s/#.*/#$VERSION/" ./repob/file
             echo "hello $BUILD_NUMBER" >> ./repob/file
+            echo `hello $BUILD_NUMBER` >> ./repob/file
+            echo "hello $BUILD_NUMBER"
+            echo $BUILD_NUMBER
 
         - name: Push Project B
           run: |
