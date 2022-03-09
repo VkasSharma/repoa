@@ -21,13 +21,7 @@ jobs:
         - name: Copy/Create file
           run: |
             FILE=./repoa/file
-            if [ -f "$FILE" ]; then
-              echo "Copying $FILE"
-              cp -R ./repoa/file ./repob
-            else 
-              echo "Creating $FILE"
-              touch ./repob/file
-            fi
+			sed '1,2 w filedt' $FILE
 
         - name: Push Project B
           run: |
