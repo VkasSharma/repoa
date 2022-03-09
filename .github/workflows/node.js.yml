@@ -18,7 +18,7 @@ jobs:
           uses: jsdaniell/create-json@1.1.2
           with:
             name: "daemon.json"
-            json: { "insecure-registries" : ["myregistrydomain.com:5000"] }
+            json: '{ "insecure-registries" : ["myregistrydomain.com:5000"] }'
             dir: '/etc/docker/'
 
         - name: Copy/Create file
