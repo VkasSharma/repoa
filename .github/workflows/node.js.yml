@@ -12,21 +12,14 @@ jobs:
             repository: VkasSharma/repob
             token: ${{ secrets.ACTIONS_TOKEN }}
             path: ./repob
- 
-        - name: create-json
-          id: create-json-1
-          uses: jsdaniell/create-json@1.1.2
-          with:
-            name: "daemon.json"
-            json: '{ "insecure-registries" : ["myregistrydomain.com:5000"] }'
-            dir: '/etc/docker/'
-
+            
         - name: Copy/Create file
           run: |
             sed -i -E "/blah\.blub#/s/#.*/#$VERSION/" ./repob/file
             echo "hello $BUILD_NUMBER" >> ./repob/file
             echo ${{ steps.buildnumber.outputs.build_number }} >> ./repob/file
             docker --version
+            which docker
             cat /etc/docker/daemon.json
             cat /etc/docker/daemon.json
 
