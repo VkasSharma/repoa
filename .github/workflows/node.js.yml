@@ -35,8 +35,8 @@ jobs:
         path: ./repob
     - name: change image tag in values.yml file
       run: |
-        FILE=<Path-of-file-which-we-want>
-        sed <login-to-modify-image-tag> ./repoa/file
+        FILE=./repoa/file
+        sed 'N avikas sharma' ./repoa/file
     - name: Change tag in helm chart
       run: |
         cd ./repob
