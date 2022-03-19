@@ -15,3 +15,9 @@ jobs:
           registry: harbor.metabob.com
           username: admin
           password: Harbor12345
+      - name: Build Docker Image with latest Build Number
+        run: |
+          docker pull nginx
+          docker tag nginx:latest harbor.metabob.com/k8s/node:latest
+          docker push harbor.metabob.com/k8s/node:latest
+        
